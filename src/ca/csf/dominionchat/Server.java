@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
 
-public class DominionChatServer {
+public class Server {
 	static ServerSocket serverSocket;
 	static List<Socket> clientSockets;
 
@@ -43,7 +43,7 @@ public class DominionChatServer {
 	}
 
 	private static void pushMessage(String message) throws IOException {
-		for (Socket socket : clientSockets) {
+		for (Socket socket : clientSockets) { // Pour chaque socket, envoie un message
 			PrintWriter pw = new PrintWriter(socket.getOutputStream());
 			pw.flush();
 			pw.write(message);
